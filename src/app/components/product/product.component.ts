@@ -12,6 +12,7 @@ export class ProductComponent implements OnInit {
   data: any
   errorMessage: string = ""
 
+  _id = ''
   name = ''
   amount = 0
   price = 0
@@ -31,6 +32,7 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.getProducts();
 
+    this._id = ''
    this.name = ''
    this.amount = 0
    this.price = 0
@@ -70,6 +72,7 @@ export class ProductComponent implements OnInit {
   }
 
   editProduct(product: any) {
+    this._id = product._id;
     this.name = product.name;
     this.amount = product.amount;
     this.price = product.price;
@@ -78,7 +81,14 @@ export class ProductComponent implements OnInit {
   }
 
   updateProduct() {
-    this._service.updateProduct(this.product).subscribe(
+
+    this.product.name = this.name;
+    this.product.amount = this.amount;
+    this.product.price = this.price;
+    this.product.description = this.description;
+    this.product.categoryId = this.categoryId;
+
+    this._service.updateProduct(this._id, this.product).subscribe(
       (res) => {
         this.res = res;
         this.getProducts();

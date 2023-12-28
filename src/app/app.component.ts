@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'gentlepetals-admin';
+
+  checkLogin(){
+    if(localStorage.getItem('token')){
+      return true
+    }
+    return false
+  }
 }

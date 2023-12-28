@@ -22,8 +22,8 @@ export class ProductService {
     return this._http.post(this._url, product);
   }
 
-  updateProduct(product: any) {
-    return this._http.patch(this._url + "/" + product.id, product);
+  updateProduct(id:any, product: any) {
+    return this._http.patch(this._url + "/" + id, product);
   }
 
   deleteProduct(id: any) {

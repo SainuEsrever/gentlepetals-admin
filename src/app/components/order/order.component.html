@@ -1,0 +1,132 @@
+
+<br>
+<div>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createOrderModal">Create new Order</button>
+</div>
+
+<br>
+
+<table class="table table-striped table-bordered text-center ">
+    <tr>
+        <th>Id</th>
+        <th>Account Id</th>
+        <th>
+            Products
+        </th>
+        <th>Total Price</th>
+        <th>Address</th>
+        <th>Status</th>
+        <th>Functions</th>
+    </tr>
+    <tr *ngFor="let d of data">
+        <td>{{d._id}}</td>
+        <td>{{d.accountId._id}}</td>
+        <td>
+            <table class="table table-bordered"*ngFor="let e of d.products">
+                <tr>
+                    <td>ProductId</td>
+                    <td>{{e.productId}}</td>
+                </tr>
+                <tr>
+                    <td>Amount</td>
+                    <td>{{e.amount}}</td>
+                </tr>
+            </table>
+        </td>
+        <td>{{d.totalPrice}}</td>
+        <td>{{d.address}}</td>
+        <td>{{d.status}}</td>
+        <td>
+            <button class="btn btn-primary caret-violet-600" (click)="editOrder(d)" data-bs-toggle="modal" data-bs-target="#updateProductModal" >Edit</button>
+            <button class="btn btn-danger" (click)="deleteOrder(d._id)">Delete</button>
+        </td>
+    </tr>
+</table>
+
+
+<div class="modal fade" id="createOrderModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Order</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="accountId" [(ngModel)]="accountId">
+                    <label for="floatingInput">Account Id</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" name="productId" [(ngModel)]="products.productId">
+                    <label for="floatingInput">Product Id</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" name="amount" [(ngModel)]="products.amount">
+                    <label for="floatingInput">Amount</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="totalPrice" [(ngModel)]="totalPrice">
+                    <label for="floatingInput">Total Price</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="address" [(ngModel)]="address">
+                    <label for="floatingInput">Address</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="status" [(ngModel)]="status">
+                    <label for="floatingInput">Status</label>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="createOrder()">Create
+                    Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updateProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Order</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="accountId" [(ngModel)]="accountId">
+                    <label for="floatingInput">Account Id</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" name="productId" [(ngModel)]="products.productId">
+                    <label for="floatingInput">Product Id</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" name="amount" [(ngModel)]="products.amount">
+                    <label for="floatingInput">Amount</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="totalPrice" [(ngModel)]="totalPrice">
+                    <label for="floatingInput">Total Price</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="address" [(ngModel)]="address">
+                    <label for="floatingInput">Address</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="status" [(ngModel)]="status">
+                    <label for="floatingInput">Status</label>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateOrder()">Update Product</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -12,6 +12,7 @@
         <th>Amount</th>
         <th>Description</th>
         <th>Category</th>
+        <th>Image</th>
         <th>Functions</th>
     </tr>
     <tr *ngFor="let d of data">
@@ -20,6 +21,7 @@
         <td>{{d.amount}}</td>
         <td>{{d.description}}</td>
         <td>{{d.categoryId}}</td>
+        <td><img style="width: 100px;" src="{{d.image}}" alt=""></td>
         <td>
             <button class="btn btn-primary caret-violet-600" (click)="editProduct(d)" data-bs-toggle="modal" data-bs-target="#updateProductModal" >Edit</button>
             <button class="btn btn-danger" (click)="deleteProduct(d)">Delete</button>

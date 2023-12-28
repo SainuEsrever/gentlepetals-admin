@@ -8,16 +8,19 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
-              <a class="nav-link" href="#">Blog</a>
-              <a class="nav-link" href="#">Category</a>
+              <a class="nav-link" routerLink="blogs">Blog</a>
+              <a class="nav-link" routerLink="categories">Category</a>
               <a class="nav-link" routerLink="products">Products</a>
               <a class="nav-link" href="#">Cart</a>
-              <a class="nav-link" href="#">Order</a>
+              <a class="nav-link" routerLink="orders">Order</a>
               <a class="nav-link" href="#">Billing</a>
               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
             </div>
-            <a routerLink="login" class="nav-link">Login</a>
+            <div>
+              <a *ngIf="checkLogin()==false" routerLink="login" class="nav-link">Login</a>
+            </div>
           </div>
+          <h4 *ngIf="checkLogin()==true">Welcome !!!</h4>
 
         </div>
       </nav>

@@ -1,0 +1,81 @@
+
+<br>
+<div>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createProductModal">Create new Category</button>
+</div>
+
+<br>
+
+<table class="table table-striped table-bordered text-center ">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Functions</th>
+    </tr>
+    <tr *ngFor="let d of data">
+        <td>{{d._id}}</td>
+        <td>{{d.name}}</td>
+        <td>{{d.slug}}</td>
+        <td>
+            <button class="btn btn-primary caret-violet-600" (click)="editCategory(d)" data-bs-toggle="modal" data-bs-target="#updateProductModal" >Edit</button>
+            <button class="btn btn-danger" (click)="deleteCategory(d)">Delete</button>
+        </td>
+    </tr>
+</table>
+
+
+<div class="modal fade" id="createProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="name" [(ngModel)]="name">
+                    <label for="floatingInput">Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="slug" [(ngModel)]="slug">
+                    <label for="floatingInput">Slug</label>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="createCategory()">Create
+                    Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updateProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="name" [(ngModel)]="name">
+                    <label for="floatingInput">Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="slug" [(ngModel)]="slug">
+                    <label for="floatingInput">Slug</label>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateCategory()">Update Product</button>
+            </div>
+        </div>
+    </div>
+</div>
