@@ -1,1 +1,111 @@
-<p>billing works!</p>
+
+<br>
+<div>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createOrderModal">Create new Bill</button>
+</div>
+
+<br>
+
+<table class="table table-striped table-bordered text-center ">
+    <tr>
+        <th>Id</th>
+        <th>Order Id</th>
+        <th>Account Id</th>
+        <th>Method</th>
+        <th>Status</th> 
+        <th>Total Price</th>
+        <th>Functions</th>
+    </tr>
+    <tr *ngFor="let d of data">
+        <td>{{d._id}}</td>
+        <td>{{d.orderId}}</td>
+        <td>{{d.accountId._id}}</td>
+        <td>{{d.method}}</td>
+        <td>{{d.status}}</td>
+        <td>{{d.totalPrice}}</td>
+        <td>
+            <button class="btn btn-primary caret-violet-600" (click)="editBilling(d)" data-bs-toggle="modal" data-bs-target="#updateProductModal" >Edit</button>
+            <button class="btn btn-danger" (click)="deleteBilling(d)">Delete</button>
+        </td>
+    </tr>
+</table>
+
+
+<div class="modal fade" id="createOrderModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Bill</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="orderId" [(ngModel)]="orderId">
+                    <label for="floatingInput">Order Id</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="accountId" [(ngModel)]="accountId">
+                    <label for="floatingInput">Account Id</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="method" [(ngModel)]="method">
+                    <label for="floatingInput">method</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="productId" [(ngModel)]="status">
+                    <label for="floatingInput">Status</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="totalPrice" [(ngModel)]="totalPrice">
+                    <label for="floatingInput">Total Price</label>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addBilling()">Create
+                    Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updateProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Bill</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="orderId" [(ngModel)]="orderId">
+                    <label for="floatingInput">Order Id</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="accountId" [(ngModel)]="accountId">
+                    <label for="floatingInput">Account Id</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="method" [(ngModel)]="method">
+                    <label for="floatingInput">method</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="productId" [(ngModel)]="status">
+                    <label for="floatingInput">Status</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="totalPrice" [(ngModel)]="totalPrice">
+                    <label for="floatingInput">Total Price</label>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateBilling()">Update Product</button>
+            </div>
+        </div>
+    </div>
+</div>

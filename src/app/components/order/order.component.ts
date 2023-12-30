@@ -13,12 +13,11 @@ export class OrderComponent implements OnInit {
   errorMessage: string = '';
 
   order = {
-    _id: '',
     accountId: '',
-    products: {
+    products: [{
       productId: '',
       amount: 0,
-    },
+    }],
     totalPrice: 0,
     address: '',
     status: '',
@@ -73,15 +72,21 @@ export class OrderComponent implements OnInit {
   }
 
   createOrder() {
+    
     this.order.accountId = this.accountId
-    this.order.products = this.products
+    this.order.products = [{
+      productId: this.products.productId,
+      amount: this.products.amount
+    }]
     this.order.totalPrice = this.totalPrice
     this.order.address = this.address
     this.order.status = this.status
 
+    console.log(this.order)
+
     this._orderService.createOrder(this.order)
       .subscribe(
-        res => console.log(res),
+        res => this.ngOnInit(),
         err => console.log(err)
       )
   }
@@ -89,7 +94,12 @@ export class OrderComponent implements OnInit {
   editOrder(order: any) {
     this._id = order._id
     this.accountId = order.accountId._id
-    this.products = order.products
+
+    for(let i = 0; i < order.products.length; i++){
+      this.products.productId = order.products[i].productId
+      this.products.amount = order.products[i].amount
+    }
+
     this.totalPrice = order.totalPrice
     this.address = order.address
     this.status = order.status
@@ -99,17 +109,19 @@ export class OrderComponent implements OnInit {
 
   updateOrder() {
 
-    this.order._id = this._id
     this.order.accountId = this.accountId
-    this.order.products = this.products
+    this.order.products = [{
+      productId: this.products.productId,
+      amount: this.products.amount
+    }]
     this.order.totalPrice = this.totalPrice
     this.order.address = this.address
     this.order.status = this.status
 
 
-    this._orderService.updateOrder(this.order._id ,this.order)
+    this._orderService.updateOrder(this._id ,this.order)
       .subscribe(
-        res => console.log(res),
+        res => this.ngOnInit(),
         err => console.log(err)
       )
   }
@@ -118,7 +130,7 @@ export class OrderComponent implements OnInit {
     if(window.confirm('Are you sure you want to delete this order')){
       this._orderService.deleteOrder(id)
       .subscribe(
-        res => console.log(res),
+        res => this.ngOnInit(),
         err => console.log(err)
       )
     }
