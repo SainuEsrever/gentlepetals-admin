@@ -18,6 +18,7 @@ export class ProductComponent implements OnInit {
   price = 0
   description = ''
   categoryId = ''
+  image = ''
 
   product = {
     name: '',
@@ -25,6 +26,7 @@ export class ProductComponent implements OnInit {
     price: 0,
     description: '',
     categoryId: '',
+    image: ''
   }
 
   constructor(private _service: ProductService) { }
@@ -38,6 +40,7 @@ export class ProductComponent implements OnInit {
    this.price = 0
    this.description = ''
    this.categoryId = ''
+    this.image = ''
   }
 
   getProducts() {
@@ -59,6 +62,7 @@ export class ProductComponent implements OnInit {
     this.product.price = this.price;
     this.product.description = this.description;
     this.product.categoryId = this.categoryId;
+    this.product.image = this.image;
 
     this._service.addProduct(this.product).subscribe(
       (res) => {
@@ -78,6 +82,7 @@ export class ProductComponent implements OnInit {
     this.price = product.price;
     this.description = product.description;
     this.categoryId = product.categoryId;
+    this.image = product.image;
   }
 
   updateProduct() {
@@ -87,6 +92,7 @@ export class ProductComponent implements OnInit {
     this.product.price = this.price;
     this.product.description = this.description;
     this.product.categoryId = this.categoryId;
+    this.product.image = this.image;
 
     this._service.updateProduct(this._id, this.product).subscribe(
       (res) => {
