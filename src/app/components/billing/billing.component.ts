@@ -101,6 +101,7 @@ export class BillingComponent implements OnInit {
     this._id = bill._id;
     this.orderId = bill.orderId;
     this.accountId = bill.accountId._id;
+    this.method = bill.method;
     this.status = bill.status;
     this.totalPrice = bill.totalPrice;
   }
